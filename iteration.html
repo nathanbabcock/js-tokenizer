@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=windows-1250">
+  <meta name="generator" content="PSPad editor, www.pspad.com">
+  <title>Iteration Limit Test</title>
+  </head>
+  <body>
+    <script>
+      function addCommas(nStr){
+      	nStr += '';
+      	x = nStr.split('.');
+      	x1 = x[0];
+      	x2 = x.length > 1 ? '.' + x[1] : '';
+      	var rgx = /(\d+)(\d{3})/;
+      	while (rgx.test(x1)) {
+      		x1 = x1.replace(rgx, '$1' + ',' + '$2');
+      	}
+      	return x1 + x2;
+      }
+      window.onload=function(){
+        msg=document.getElementById("msg");
+        begin=new Date();
+        
+        var i;
+        for(i=0;i<200000000;i++) ;
+        
+        end=new Date();
+        //Calculate difference btw the two dates
+        diff=Math.ceil((end.getTime()-begin.getTime()))
+        msg.innerHTML+=(addCommas(i)+" iterations <BR> "+addCommas(diff)+" milliseconds ("+diff/1000+" seconds).<br>"+addCommas(parseInt(i/diff))+" iterations per millisecond, "+addCommas(parseInt((i/diff)*1000))+" iterations per second.");
+      }
+    </script>
+    <div id="msg"></div>
+  </body>
+</html>
